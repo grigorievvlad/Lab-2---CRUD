@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Форма сотрудника{% endblock %}
+
+{% block content %}
+<h2>Добавление или изменение сотрудника</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="button">Сохранить</button>
+</form>
+
+<a href="{% url 'cotrudniki_list' %}">Назад к сотрудникам</a>
+{% endblock %}

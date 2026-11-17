@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Информация о поставщике{% endblock %}
+
+{% block content %}
+<h2>{{ postavchik.naimenovanie }}</h2>
+
+{% if postavchik.photo %}
+    <img src="{{ postavchik.photo.url }}" width="250" alt="Фото поставщика">
+{% endif %}
+
+<p>Контактный телефон: {{ postavchik.contact_telephone }}</p>
+<p>Адрес: {{ postavchik.adres }}</p>
+<p>Наличие скидки: {{ postavchik.nalichie_skidki|yesno:"Да,Нет" }}</p>
+<p>Размер скидки: {{ postavchik.razmer_skidki }}%</p>
+<p>Гарантия: {{ postavchik.garantia }}</p>
+<p>Категория: {{ postavchik.category }}</p>
+<p>Страна: {{ postavchik.strana }}</p>
+
+<a href="{% url 'postavchik_edit' postavchik.pk %}">Изменить</a>
+<a href="{% url 'postavchik_delete' postavchik.pk %}">Удалить</a>
+<a href="{% url 'postavchik_list' %}">Назад к поставщикам</a>
+{% endblock %}

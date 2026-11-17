@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Форма поставщика{% endblock %}
+
+{% block content %}
+<h2>Добавление или изменение поставщика</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="button">Сохранить</button>
+</form>
+
+<a href="{% url 'postavchik_list' %}">Назад к поставщикам</a>
+{% endblock %}

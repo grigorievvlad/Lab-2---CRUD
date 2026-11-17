@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Информация о сотруднике{% endblock %}
+
+{% block content %}
+<h2>Информация о сотруднике</h2>
+
+<p>Фамилия: {{ cotrudnik.lastname }}</p>
+<p>Имя: {{ cotrudnik.firstname }}</p>
+<p>Отчество: {{ cotrudnik.secondname }}</p>
+<p>Номер телефона: {{ cotrudnik.number_telephone }}</p>
+<p>Адрес проживания: {{ cotrudnik.address_prozhivania }}</p>
+<p>Должность: {{ cotrudnik.doljnost }}</p>
+
+<a href="{% url 'cotrudniki_edit' cotrudnik.pk %}">Изменить</a>
+<a href="{% url 'cotrudniki_delete' cotrudnik.pk %}">Удалить</a>
+<a href="{% url 'cotrudniki_list' %}">Назад к сотрудникам</a>
+{% endblock %}

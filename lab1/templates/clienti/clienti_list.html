@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Клиенты{% endblock %}
+
+{% block content %}
+<h2>Клиенты</h2>
+
+<a href="{% url 'clienti_add' %}" class="button">Добавить клиента</a>
+
+{% for client in clienti %}
+    <div>
+        <h3>{{ client.fio }}</h3>
+        <p>Адрес: {{ client.adres }}</p>
+        <p>Телефон: {{ client.telephone }}</p>
+        <p>Номер заявки: {{ client.nomer_zayavki }}</p>
+
+        <a href="{% url 'clienti_detail' client.pk %}">Подробнее</a>
+        <a href="{% url 'clienti_edit' client.pk %}">Изменить</a>
+        <a href="{% url 'clienti_delete' client.pk %}">Удалить</a>
+    </div>
+{% empty %}
+    <p>Клиенты отсутствуют.</p>
+{% endfor %}
+
+{% endblock %}

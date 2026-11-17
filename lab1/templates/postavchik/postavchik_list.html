@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Поставщики{% endblock %}
+
+{% block content %}
+<h2>Поставщики</h2>
+
+<a href="{% url 'postavchik_add' %}" class="button">Добавить поставщика</a>
+
+{% for postavchik in postavshiki %}
+    <div>
+        <h3>{{ postavchik.naimenovanie }}</h3>
+
+        {% if postavchik.photo %}
+            <img src="{{ postavchik.photo.url }}" width="150" alt="Фото поставщика">
+        {% endif %}
+
+        <p>Телефон: {{ postavchik.contact_telephone }}</p>
+        <p>Адрес: {{ postavchik.adres }}</p>
+        <p>Страна: {{ postavchik.strana }}</p>
+
+        <a href="{% url 'postavchik_detail' postavchik.pk %}">Подробнее</a>
+        <a href="{% url 'postavchik_edit' postavchik.pk %}">Изменить</a>
+        <a href="{% url 'postavchik_delete' postavchik.pk %}">Удалить</a>
+    </div>
+{% empty %}
+    <p>Поставщики отсутствуют.</p>
+{% endfor %}
+
+{% endblock %}

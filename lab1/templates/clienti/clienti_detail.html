@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Информация о клиенте{% endblock %}
+
+{% block content %}
+<h2>Информация о клиенте</h2>
+
+<p>ФИО: {{ client.fio }}</p>
+<p>Адрес: {{ client.adres }}</p>
+<p>Телефон: {{ client.telephone }}</p>
+<p>Номер заявки: {{ client.nomer_zayavki }}</p>
+
+<a href="{% url 'clienti_edit' client.pk %}">Изменить</a>
+<a href="{% url 'clienti_delete' client.pk %}">Удалить</a>
+<a href="{% url 'clienti_list' %}">Назад к клиентам</a>
+{% endblock %}

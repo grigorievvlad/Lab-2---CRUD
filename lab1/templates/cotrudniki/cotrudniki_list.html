@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Сотрудники{% endblock %}
+
+{% block content %}
+<h2>Сотрудники</h2>
+
+<a href="{% url 'cotrudniki_add' %}" class="button">Добавить сотрудника</a>
+
+{% for cotrudnik in cotrudniki %}
+    <div>
+        <h3>{{ cotrudnik.lastname }} {{ cotrudnik.firstname }} {{ cotrudnik.secondname }}</h3>
+
+        <p>Телефон: {{ cotrudnik.number_telephone }}</p>
+        <p>Адрес: {{ cotrudnik.address_prozhivania }}</p>
+        <p>Должность: {{ cotrudnik.doljnost }}</p>
+
+        <a href="{% url 'cotrudniki_detail' cotrudnik.pk %}">Подробнее</a>
+        <a href="{% url 'cotrudniki_edit' cotrudnik.pk %}">Изменить</a>
+        <a href="{% url 'cotrudniki_delete' cotrudnik.pk %}">Удалить</a>
+    </div>
+{% empty %}
+    <p>Сотрудники отсутствуют.</p>
+{% endfor %}
+
+{% endblock %}

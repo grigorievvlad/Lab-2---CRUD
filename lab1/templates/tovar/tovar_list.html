@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог товаров{% endblock %}
+
+{% block content %}
+<h2>Каталог товаров</h2>
+
+<a href="{% url 'tovar_add' %}" class="button">Добавить товар</a>
+
+{% for tovar in tovary %}
+    <div>
+        <h3>{{ tovar.naimenovanie }}</h3>
+
+        {% if tovar.photo %}
+            <img src="{{ tovar.photo.url }}" width="150" alt="Фото товара">
+        {% endif %}
+
+        <p>Стоимость: {{ tovar.cost }} руб.</p>
+        <p>Количество на складе: {{ tovar.kolichestvo_na_sklade }}</p>
+
+        <a href="{% url 'tovar_detail' tovar.pk %}">Подробнее</a>
+        <a href="{% url 'tovar_edit' tovar.pk %}">Изменить</a>
+        <a href="{% url 'tovar_delete' tovar.pk %}">Удалить</a>
+    </div>
+{% empty %}
+    <p>Товары отсутствуют.</p>
+{% endfor %}
+
+{% endblock %}

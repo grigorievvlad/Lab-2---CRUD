@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Информация о заказе{% endblock %}
+
+{% block content %}
+<h2>Заказ №{{ zakaz.id_zakaza }}</h2>
+
+<p>Дата: {{ zakaz.date }}</p>
+<p>Количество товара: {{ zakaz.kolichestvo_t }}</p>
+<p>Сумма: {{ zakaz.cumma }} руб.</p>
+<p>Клиент: {{ zakaz.client }}</p>
+<p>Сотрудник: {{ zakaz.cotrudnik }}</p>
+<p>Товар: {{ zakaz.tovar }}</p>
+
+<a href="{% url 'zakazi_edit' zakaz.pk %}">Изменить</a>
+<a href="{% url 'zakazi_delete' zakaz.pk %}">Удалить</a>
+<a href="{% url 'zakazi_list' %}">Назад к заказам</a>
+{% endblock %}

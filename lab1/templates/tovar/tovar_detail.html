@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Информация о товаре{% endblock %}
+
+{% block content %}
+<h2>{{ tovar.naimenovanie }}</h2>
+
+{% if tovar.photo %}
+    <img src="{{ tovar.photo.url }}" width="250" alt="Фото товара">
+{% endif %}
+
+<p>Стоимость: {{ tovar.cost }} руб.</p>
+<p>Количество на складе: {{ tovar.kolichestvo_na_sklade }}</p>
+<p>Категория: {{ tovar.category }}</p>
+<p>Серийный номер: {{ tovar.serial_number }}</p>
+
+<a href="{% url 'tovar_edit' tovar.pk %}">Изменить</a>
+<a href="{% url 'tovar_delete' tovar.pk %}">Удалить</a>
+<a href="{% url 'tovar_list' %}">Назад к товарам</a>
+{% endblock %}
